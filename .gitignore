@@ -1,0 +1,20 @@
+#intellij config
+.idea
+
+#npm dependency
+node_modules
+
+#bower dependency
+public/lib
+
+#jscoverage tmp file
+lib-cov
+
+#log4js logs
+log/*.log*
+log/access*
+
+#npm log
+npm-debug.log
+
+build

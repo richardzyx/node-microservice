@@ -1,0 +1,24 @@
+{
+  "name": "wecash_service",
+  "version": "0.1.0",
+  "description": "Wecash's new micro-service framework",
+  "private": true,
+  "scripts": {
+    "start": "node wecashService.js"
+  },
+  "keywords": [
+    "wecash",
+    "micro-service"
+  ],
+  "author": "Richard Zhang, Ziran Ding",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.3.2",
+    "mongodb": "^2.0.30",
+    "mysql": "^2.7.0",
+    "node-uuid": "^1.4.3",
+    "pg": "^4.3.0",
+    "redis": "^0.12.1",
+    "underscore": "^1.8.3"
+  }
+}
