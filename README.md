@@ -1,7 +1,12 @@
-Node Microservice Package
+Node－Microservice Package
 ============================
 
+
+
 Clean, Direct, Easy to Scale solution to Node Microservice Framework.
+
+
+
 
 Inspired by [seneca.js][1], IBM's article on [microservice using seneca and MQLight][2], and RabbitMQ's [tutorial on RPC][3], 
 we aim to create a one stop solution that will allow seneca-style communication between any number of servers and clients, with the
