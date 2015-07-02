@@ -106,7 +106,7 @@ experience, we find that a number of 10 or 100 works just fine.
   `{noAck:true}`
 
 
-###Server:
+###Client:
 This function will easily set your client up with your message broker over amqp protocol:
 
 
@@ -133,33 +133,9 @@ After the server received the message, it will first decode and parse it as a JS
 
 
 
-## Options
+## Example 
 
-The following object describes the available options for this transport.
-These are applicable to both clients and servers.
-
-    var defaults = {
-        amqp: {
-            type: 'amqp',
-            url: 'amqp://localhost',
-            exchange: {
-                name: 'seneca',
-                options: {
-                    durable: true,
-                    autoDelete: false
-                }
-            },
-            queues: {
-                action: {
-                    durable: true
-                },
-                response: {
-                    autoDelete: true,
-                    exclusive: true
-                }
-            }
-        }
-    };
+You can find one test client and one test server file in the example folder. The amqp_url is fortified! Try with different options.
 
 ## TODO
 
