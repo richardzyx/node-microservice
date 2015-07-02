@@ -159,9 +159,19 @@ You can find one test client and one test server file in the example folder. The
 
 ## TODO
 
-- Tests
+
+Definite:
+- Implement the logger system that would include all log info in one place
+- Include a simple RabbitMQ tutorial in README
+
+Maybe:
+- Implement the topic/fanout delivery options
+- Implement the exchange/clustering node options
 
 Any help/fork/issues/contribution is deeply appreciated!
+
+
+2015.7
 
 
 [1]: http://senecajs.org/
