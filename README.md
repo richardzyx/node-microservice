@@ -24,18 +24,18 @@ Special thanks to my mentor and great boss: Ziran Ding@[Wecash][4]! This solutio
 
 
 
-**TL;DR**: Freedom in language, minimum lines of code, over amqp message broker
+**TL;DR**: freedom in language, minimum lines of code, over amqp message broker
 
 
 
 
 Advantage/Features: 
 - **Timeout Mechanism**: During our production test, we found that having the timeout mechanism is extremely helpful especially when the internet
-    connection is poor and the number of requests is huge. Both the server and the client take an parameter of timeout,
+    connection is poor and the number of requests is huge. Both the server and the client take the parameter of timeout,
     so that when the time is due, the client will automatically timeout the requests, or the tasks will timeout in the queue
     before being sent to the server.
 - **Multiple Requests**: While testing all of the available choices, we found that none of them can handle the problem of having multiple
-    requests from one client. By using our own function, we made sure that no matter which request client 
+    requests from one client. By using our own function, we made sure that no matter which requesting client 
     received the response, the request will be resolved and returned properly.
 - **Promise**: No more call back api! Everything is a Promise.
 
@@ -70,20 +70,20 @@ For options:
 state. **Warning**: when having two or more servers, setting noAck to True will risk loosing message if one of the server that gets the messages goes offline.
 - if noAck = False: the queue will make sure the server get and finish the task with acknowledgements.
 Warning: if the server gets the tasks but fails to finish, the message will
-  - 1. Timeout as determined by messageTtl option
+  - 1. Timeout as determined by messageTtl option,
   - 2. If the server goes offline, the tasks will be requeued and sent to the
    next available server.
 
 
 
 *We recommend setting noAck to False to guarantee message delivery and avoid loosing message when
-multiple servers are online and working
+multiple servers are online and working.
 
 
 **Optional**:
 
 **messageTtl** (milliseconds) (must start a new queue if this option was just added, modified, or taken out)
-- Set Timeout for messages in the queue. This option has proven to be extremely helpful when the
+- Set timeout for messages in the queue. This option has proven to be extremely helpful when the
 server goes offline and comes back and the messages are requeued. If the messageTtl is set to
 the same milliseconds as the client's timeout, the queue will make sure the server do not get
 timed out messages that the client no longer cares about.
@@ -102,7 +102,7 @@ experience, we find that a number of 10 or 100 works just fine.
 
 
 
-*Only effective when noAck is set to False
+*Only effective when noAck is set to False.
 
 **durable** (boolean)
 - Make the queue durable as stated on the RabbitMQ website. The default setting is false.
@@ -118,7 +118,7 @@ experience, we find that a number of 10 or 100 works just fine.
 
 
 ###Client:
-This function will easily set your client up with your message broker over amqp protocol:
+This function will easily set up your client with your message broker over amqp protocol:
 
 
 
