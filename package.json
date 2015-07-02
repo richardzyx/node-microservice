@@ -1,16 +1,19 @@
 {
   "name": "wecash_service",
-  "version": "0.1.0",
-  "description": "Wecash's new micro-service framework",
-  "private": true,
+  "version": "0.5.0",
+  "description": "Clean, Direct, Easy to Scale solution to Node Microservice Framework",
+  "preferGlobal":"true",
+  "main":"index.js",
   "scripts": {
-    "start": "node wecashService.js"
+    "start": "node index.js"
   },
   "keywords": [
-    "wecash",
-    "micro-service"
+    "framework",
+    "microservice",
+    "amqp",
+    "rabbitmq"
   ],
-  "author": "Richard Zhang, Ziran Ding",
+  "author": "Richard Yuxuan Zhang, Ziran Ding",
   "license": "ISC",
   "dependencies": {
     "amqplib": "^0.3.2",

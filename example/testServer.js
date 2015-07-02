@@ -1,9 +1,9 @@
 /**
  * Created by root on 6/17/15.
  */
-var amqpServer = require('./index');
+var amqpServer = require('./../index');
 var amqp_url="amqp://richard:12345678@115.28.35.230";
-var options = {noAck:false, prefetch_num:1, messageTtl:600};
+var options = {noAck:false, prefetch_num:1, messageTtl:60000};
 
 function test(content){
     return new Promise(function(resolve,reject){
