@@ -64,6 +64,9 @@ Warning: if the server gets the tasks but fails to finish, the message will
   - 1. Timeout as determined by messageTtl option
   - 2. If the server goes offline, the tasks will be requeued and sent to the
    next available server.
+
+
+
 *We recommend setting noAck to False to guarantee message delivery and avoid loosing message when
 multiple servers are online and working
 
@@ -87,7 +90,10 @@ is the maximum number of tasks one server can take each time. That said, this wi
 effective when the noAck is set to False. If prefetch_num is not passed in, the server will
 simply take as many tasks as possible and this may cause a race condition. In our production
 experience, we find that a number of 10 or 100 works just fine.
-*Only effective when noAck == False
+
+
+
+*Only effective when noAck is set to False
 
 **durable** (boolean)
 - Make the queue durable as stated on the RabbitMQ website. The default setting is false.
