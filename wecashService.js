@@ -4,7 +4,7 @@
 var _ = require('underscore');
 var mysql_customer =require('./mysql_customer');
 var pg_client= require('./lib/db/db_client').pg_client;
-var amqpServer = require('./amqpConnect');
+var amqpServer = require('./index');
 var amqp_url="amqp://richard:12345678@115.28.35.230";
 
 /**
