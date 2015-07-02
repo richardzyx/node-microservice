@@ -47,7 +47,7 @@ Just add this one line of code at the end of your service file, pass options as 
 `exports.server_listen=function(amqp_url,service_name,pro,options)`
 
 
-- amqp_url is the address of your MQ service. Such as:`"amqp://usr:passwork@128.11.22.230"`
+- amqp_url is the address of your MQ service. Such as:`"amqp://usr:password@128.11.22.230"`
 - service_name is the name of the request the server is listening to. The server will only listen to the request that the
 client sent with the same service name.
 - pro is the function that you want to pass the message/task to. This function **MUST** be a Promise.
@@ -99,7 +99,7 @@ experience, we find that a number of 10 or 100 works just fine.
 - Make the queue durable as stated on the RabbitMQ website. The default setting is false.
 
 
-####Example:
+#####Example:
 - Our Safest/Most Used Options:
   `{noAck:false, prefetch_num:10, messageTtl:60000}`
 - Simplest/Minimalist Options(best for just testing): 
