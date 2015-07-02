@@ -8,7 +8,7 @@ we aim to create a one stop solution that will allow seneca-style communication 
 ability of load balance offered by message brokers such as RabbitMQ. We did it by first trying all the current available
 choices based on seneca.js, but none of them really worked in the most basic aspects. So we decided to do this without
 any dependency on seneca, thus allowing us the maximum freedom in programming language, and set up RabbitMQ server
-as our own message broker. Using this package, you only need two line of code to set up the server, and about three lines for
+as our own message broker. Using this package, you only need one function to set up the server, and two functions for
 the client. You can even separate the connection and send functions for the client, so you only need to connect once
 for your entire project, and send any number of requests.
 
@@ -37,7 +37,7 @@ Advantage/Features:
 
     npm install node-microservice
 
-## Options
+## Usage
 
 ###Server:
 Just add this one line of code at the end of your service file, pass options as an object, and you have a working server.
@@ -106,17 +106,32 @@ experience, we find that a number of 10 or 100 works just fine.
   `{noAck:true}`
 
 
-###Client:
+###Server:
+This function will easily set your client up with your message broker over amqp protocol:
 
-    var client = require('seneca')()
-        .use(require('..'))
-        .client({type: 'amqp'}):
 
-    setInterval(function() {
-        client.act({generate: 'id'}, function(err, result) {
-            console.log(JSON.stringify(result));
-        });
-    }, 500)
+
+`exports.connect_amqp=function(amqp_url)`
+
+
+- amqp_url is the address of your MQ service. Such as:`"amqp://usr:password@128.11.22.230"`
+
+
+
+
+This function will send your message to your designated server, and timeout if a response is not received within the given time:
+
+
+
+`exports.send=function(serviceName,message,timeout)`
+
+
+- serviceName is the name of the server you want to send your message to. Make sure your server and client have the same serviceName!
+- message is an object that is sent to the message broker. Behind the scene, the message is first transformed to string and then a buffer.
+After the server received the message, it will first decode and parse it as a JSON object.
+- timeout is the milliseconds you want the client to wait before giving up
+
+
 
 ## Options
 
