@@ -77,9 +77,9 @@ experience, we find that a number of 10 or 100 works just fine.
 
 ####Example:
 - Our Safest/Most Used Options:
-  {noAck:false, prefetch_num:10, messageTtl:60000}
+  `{noAck:false, prefetch_num:10, messageTtl:60000}`
 - Simplest/Minimalist Options(best for just testing): 
-  {noAck:true}
+  `{noAck:true}`
 
 
 ###Client:
