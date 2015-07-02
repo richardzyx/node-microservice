@@ -12,18 +12,23 @@ as our own message broker. Using this package, you only need one line of code to
 the client. You can even separate the connection and send functions for the client, so you only need to connect once
 for your entire project, and send any number of requests.
 
+
+
+**TL;DR**: Freedom in language, minimum lines of code, over amqp message broker
+
+
+
 Advantage/Features: 
-- Timeout mechanism
-    During our production test, we found that having the timeout mechanism is extremely helpful especially when the internet
+- **Timeout mechanism**: During our production test, we found that having the timeout mechanism is extremely helpful especially when the internet
     connection is poor and the number of requests is huge. Both the server and the client take an parameter of timeout,
     so that when the time is due, the client will automatically timeout the requests, or the tasks will timeout in the queue
     before being sent to the server.
-- Multiple Requests
-    While testing all of the available choices, we found that none of them can handle the problem of having multiple
+- **Multiple Requests**: While testing all of the available choices, we found that none of them can handle the problem of having multiple
     requests from one client. By using our own function, we made sure that no matter which request client 
     received the response, the request will be resolved and returned properly.
-- Promise
-    No more call back api! Everything is a Promise.
+- **Promise**: No more call back api! Everything is a Promise.
+
+
 
 ## Install
 
