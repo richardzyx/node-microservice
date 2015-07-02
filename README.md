@@ -14,12 +14,14 @@ for your entire project, and send any number of requests.
 
 
 
+
 **TL;DR**: Freedom in language, minimum lines of code, over amqp message broker
 
 
 
+
 Advantage/Features: 
-- **Timeout mechanism**: During our production test, we found that having the timeout mechanism is extremely helpful especially when the internet
+- **Timeout Mechanism**: During our production test, we found that having the timeout mechanism is extremely helpful especially when the internet
     connection is poor and the number of requests is huge. Both the server and the client take an parameter of timeout,
     so that when the time is due, the client will automatically timeout the requests, or the tasks will timeout in the queue
     before being sent to the server.
@@ -30,22 +32,55 @@ Advantage/Features:
 
 
 
+
 ## Install
 
     npm install node-microservice
 
-## Usage
+## Options
 
-Server:
+###Server:
 
-    require('seneca')()
-        .use(require('..'))
-        .add({generate: 'id'}, function(message, done) {
-            done(null, {pid: process.pid, id: '' + Math.random()});
-        })
-        .listen({type: 'amqp'});
+**Must Have**: noAck (boolean)
+- if noAck = True: the queue will send tasks to server and then discard regardless of the server's
+state. **Warning**: when having two or more servers, setting noAck to True will risk loosing message if one of the server that gets the messages goes offline.
+- if noAck = False: the queue will make sure the server get and finish the task with acknowledgements.
+Warning: if the server gets the tasks but fails to finish, the message will
+  - 1. Timeout as determined by messageTtl option
+  - 2. If the server goes offline, the tasks will be requeued and sent to the
+   next available server.
+*We recommend setting noAck to False to guarantee message delivery and avoid loosing message when
+multiple servers are online and working
 
-Client:
+
+**Optional** :
+
+**messageTtl** (milliseconds) (must start a new queue if this option was just added, modified, or taken out)
+- Set Timeout for messages in the queue. This option has proven to be extremely helpful when the
+server goes offline and comes back and the messages are requeued. If the messageTtl is set to
+the same milliseconds as the client's timeout, the queue will make sure the server do not get
+timed out messages that the client no longer cares about.
+*We recommend setting the messageTtl equal to the client's timeout parameter.
+
+
+**prefetch_num** (integer bigger than or equal to 1)
+- Set the maximum number of acknowledgements the queue can wait from the server. In other words, it
+is the maximum number of tasks one server can take each time. That said, this will only be
+effective when the noAck is set to False. If prefetch_num is not passed in, the server will
+simply take as many tasks as possible and this may cause a race condition. In our production
+experience, we find that a number of 10 or 100 works just fine.
+*Only effective when noAck == False
+
+**durable** (boolean)
+- Make the queue durable as stated on the RabbitMQ website. The default setting is false.
+
+
+####Example:
+Our Safest/Most Used Options: {noAck:false, prefetch_num:10, messageTtl:60000}
+Simplest/Minimalist Options(best for just testing): {noAck:true}
+
+
+###Client:
 
     var client = require('seneca')()
         .use(require('..'))
