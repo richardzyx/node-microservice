@@ -19,7 +19,7 @@ for your entire project, and send any number of requests.
 
 
 
-Special thanks to my mentor and a great boss: Ziran Ding@wecash! This package will not exist or work without his help.
+Special thanks to my mentor and great boss: Ziran Ding@[Wecash][4]! This solution will not exist or even work without his help.
 
 
 
@@ -177,3 +177,4 @@ Any help/fork/issues/contribution is deeply appreciated!
 [1]: http://senecajs.org/
 [2]: https://developer.ibm.com/messaging/2015/05/06/microservices-with-seneca-and-mq-light/
 [3]: https://github.com/squaremo/amqp.node/tree/master/examples/tutorials
+[4]: http://www.wecash.net/
