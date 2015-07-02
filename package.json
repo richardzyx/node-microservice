@@ -1,5 +1,5 @@
 {
-  "name": "wecash_service",
+  "name": "node-microservice",
   "version": "0.5.0",
   "description": "Clean, Direct, Easy to Scale solution to Node Microservice Framework",
   "preferGlobal":"true",
@@ -17,11 +17,6 @@
   "license": "ISC",
   "dependencies": {
     "amqplib": "^0.3.2",
-    "mongodb": "^2.0.30",
-    "mysql": "^2.7.0",
-    "node-uuid": "^1.4.3",
-    "pg": "^4.3.0",
-    "redis": "^0.12.1",
-    "underscore": "^1.8.3"
+    "node-uuid": "^1.4.3"
   }
 }
