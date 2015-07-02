@@ -111,6 +111,8 @@ experience, we find that a number of 10 or 100 works just fine.
   `{noAck:true}`
 
 
+
+
 ###Client:
 This function will easily set your client up with your message broker over amqp protocol:
 
@@ -138,15 +140,24 @@ After the server received the message, it will first decode and parse it as a JS
 
 
 
+We have decided that the client will not have an noAck option and is set to true since we do not really care about whether
+the client has received the response. Welcome to fork if you would like this to be added!
+
+
+
+
 ## Example 
 
 You can find one test client and one test server file in the example folder. The amqp_url is fortified! Try with different options.
+
+
+
 
 ## TODO
 
 - Tests
 
-Any help/contribution is appreciated!
+Any help/fork/issues/contribution is deeply appreciated!
 
 
 [1]: http://senecajs.org/
