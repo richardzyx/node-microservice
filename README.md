@@ -140,8 +140,8 @@ After the server received the message, it will first decode and parse it as a JS
 
 
 
-We have decided that the client will not have an noAck option and is set to true since we do not really care about whether
-the client has received the response. Welcome to fork if you would like this to be added!
+We have decided that the client will not have an noAck option and it is set to true since we do not really care about whether
+the client has received the response. Welcome to fork if you would like to add this feature!
 
 
 
