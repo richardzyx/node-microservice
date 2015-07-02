@@ -19,6 +19,10 @@ for your entire project, and send any number of requests.
 
 
 
+Special thanks to my mentor and a great boss: Ziran Ding@wecash! This package will not exist or work without his help.
+
+
+
 
 **TL;DR**: Freedom in language, minimum lines of code, over amqp message broker
 
