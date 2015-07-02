@@ -53,6 +53,9 @@ client sent with the same service name.
 - pro is the function that you want to pass the message/task to. This function **MUST** be a Promise.
 
 For options:
+
+
+
 **Must Have**: noAck (boolean)
 - if noAck = True: the queue will send tasks to server and then discard regardless of the server's
 state. **Warning**: when having two or more servers, setting noAck to True will risk loosing message if one of the server that gets the messages goes offline.
@@ -72,6 +75,9 @@ multiple servers are online and working
 server goes offline and comes back and the messages are requeued. If the messageTtl is set to
 the same milliseconds as the client's timeout, the queue will make sure the server do not get
 timed out messages that the client no longer cares about.
+
+
+
 *We recommend setting the messageTtl equal to the client's timeout parameter.
 
 
