@@ -8,7 +8,7 @@ we aim to create a one stop solution that will allow seneca-style communication 
 ability of load balance offered by message brokers such as RabbitMQ. We did it by first trying all the current available
 choices based on seneca.js, but none of them really worked in the most basic aspects. So we decided to do this without
 any dependency on seneca, thus allowing us the maximum freedom in programming language, and set up RabbitMQ server
-as our own message broker. Using this package, you only need one line of code to set up the server, and about three lines for
+as our own message broker. Using this package, you only need two line of code to set up the server, and about three lines for
 the client. You can even separate the connection and send functions for the client, so you only need to connect once
 for your entire project, and send any number of requests.
 
@@ -40,7 +40,19 @@ Advantage/Features:
 ## Options
 
 ###Server:
+Just add this one line of code at the end of your service file, pass options as an object, and you have a working server.
 
+
+
+`exports.server_listen=function(amqp_url,service_name,pro,options)`
+
+
+- amqp_url is the address of your MQ service. Such as:`"amqp://usr:passwork@128.11.22.230"`
+- service_name is the name of the request the server is listening to. The server will only listen to the request that the
+client sent with the same service name.
+- pro is the function that you want to pass the message/task to. This function **MUST** be a Promise.
+
+For options:
 **Must Have**: noAck (boolean)
 - if noAck = True: the queue will send tasks to server and then discard regardless of the server's
 state. **Warning**: when having two or more servers, setting noAck to True will risk loosing message if one of the server that gets the messages goes offline.
