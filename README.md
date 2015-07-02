@@ -53,7 +53,7 @@ Warning: if the server gets the tasks but fails to finish, the message will
 multiple servers are online and working
 
 
-**Optional** :
+**Optional**:
 
 **messageTtl** (milliseconds) (must start a new queue if this option was just added, modified, or taken out)
 - Set Timeout for messages in the queue. This option has proven to be extremely helpful when the
@@ -76,8 +76,10 @@ experience, we find that a number of 10 or 100 works just fine.
 
 
 ####Example:
-Our Safest/Most Used Options: {noAck:false, prefetch_num:10, messageTtl:60000}
-Simplest/Minimalist Options(best for just testing): {noAck:true}
+- Our Safest/Most Used Options:
+  {noAck:false, prefetch_num:10, messageTtl:60000}
+- Simplest/Minimalist Options(best for just testing): 
+  {noAck:true}
 
 
 ###Client:
