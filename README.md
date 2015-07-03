@@ -160,11 +160,19 @@ You can find one test client and one test server file in the example folder. The
 
 
 
+## Message Broker
+
+We recommend and use RabbitMQ for its popularity and wide range of support. For a simple intro to installation and tutorial, please refer
+to its [website][6]. Essentially, since we use `amqplib`, any message broker based on amqp protocol is just fine.
+
+
+
 
 ## TODO
 
 
 Definite:
+- Improve Readme with photos/interactions
 - Implement the logger system that would include all log info in one place
 - Include a simple RabbitMQ tutorial in README
 
@@ -183,3 +191,4 @@ Any help/fork/issues/contribution is deeply appreciated!
 [3]: https://github.com/squaremo/amqp.node/tree/master/examples/tutorials
 [4]: https://github.com/dingziran
 [5]: http://www.wecash.net/
+[6]: https://www.rabbitmq.com/download.html
