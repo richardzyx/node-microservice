@@ -172,7 +172,7 @@ to its [website][6]. Essentially, since we use `amqplib`, any message broker bas
 
 
 Definite:
-- Improve Readme with photos/interactions
+- Improve Readme with photos/interactions and version logs
 - Implement the logger system that would include all log info in one place
 - Include a simple RabbitMQ tutorial in README
 
