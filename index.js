@@ -153,9 +153,17 @@ exports.server_listen=function(amqp_url,service_name,pro,options){//pro has to b
                     },
                     function onReject(err){
                         console.log(err);
+                        ch.sendToQueue(msg.properties.replyTo,
+                            new Buffer(JSON.stringify(err)),
+                            {correlationId: msg.properties.correlationId});
+                        if(!options.noAck) {
+                            ch.ack(msg);
+                        }
                     }
                 );
             }
         });
-    }).then(null, console.warn);
+    }).then(null, function(err){
+        console.error("Server has problem connecting, shutting down...\nDetail:\n" + err);
+    });
 };
