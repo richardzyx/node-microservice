@@ -171,7 +171,7 @@ to its [website][6]. Essentially, since we use `amqplib`, any message broker bas
 ## Version Updates
 
 - Ver 0.5.5: fixed problems in server side on error handling including returning messages and shutting down when connection throws an error;
-updated license from ISC to MIT; minor fixes in readme
+updated license from ISC to MIT; minor fixes in readme; no longer prefer global installation
 
 
 
