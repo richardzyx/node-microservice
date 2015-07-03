@@ -60,7 +60,7 @@ function maybeAnswer(msg) {
     var corrId=msg.properties.correlationId;
     var pro = cacheTable[corrId];
     if(pro){
-        pro.resolve(msg.content.toString());
+        pro.resolve(JSON.parse(msg.content.toString()));
         delete cacheTable[corrId];
     }
 }
