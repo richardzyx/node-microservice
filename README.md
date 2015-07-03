@@ -48,6 +48,10 @@ Advantage/Features:
 
 ## Usage
 
+
+
+Please see GitHub for better formatted Readme.
+
 ###Server:
 Just add this one line of code at the end of your service file, pass options as an object, and you have a working server.
 
