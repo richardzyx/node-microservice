@@ -50,7 +50,7 @@ Advantage/Features:
 
 
 
-Please see GitHub for better formatted Readme.
+npm users please refer to GitHub repo for better formatted Readme.
 
 ###Server:
 Just add this one line of code at the end of your service file, pass options as an object, and you have a working server.
