@@ -180,10 +180,12 @@ Maybe:
 - Implement the topic/fanout delivery options
 - Implement the exchange/clustering node options
 
-Any help/fork/issues/contribution is deeply appreciated!
+Any help/fork/issues/contribution is deeply appreciated and welcomed!
 
 
-2015.7
+
+
+July 2015
 
 
 [1]: http://senecajs.org/
