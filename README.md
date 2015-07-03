@@ -170,6 +170,8 @@ to its [website][6]. Essentially, since we use `amqplib`, any message broker bas
 
 ## Version Updates
 
+- Ver 0.5.6: fixed the problem of not parsing the response from server to JSON in package before passing back to client;
+no parsing is needed at all now!
 - Ver 0.5.5: fixed problems in server side on error handling including returning messages and shutting down when connection throws an error;
 updated license from ISC to MIT; minor fixes in readme; no longer prefer global installation
 
