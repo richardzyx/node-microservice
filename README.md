@@ -42,6 +42,17 @@ Advantage/Features:
 
 
 
+## New
+
+The **logging system** is now fully functional! We had a long discussion with multiple tryouts, and we have
+decided to use and only support the [graylog][6] system based on [graylog2][7] package for this project. It was not an 
+easy decision for us, and we understand having to install both graylog and elasticsearch would take up to 2 hours of
+configurations. So we have made the logging options **optional**. If you would still like to use the common way `console.log`,
+simply uncomment the line in source code and everything will work exactly the same. For detailed description, see client function
+usage.
+
+
+
 ## Install
 
     npm install node-microservice
@@ -163,13 +174,14 @@ You can find one test client and one test server file in the example folder. The
 ## Message Broker
 
 We recommend and use RabbitMQ for its popularity and wide range of support. For a simple intro to installation and tutorial, please refer
-to its [website][6]. Essentially, since we use `amqplib`, any message broker based on amqp protocol is just fine.
+to its [website][8]. Essentially, since we use `amqplib`, any message broker based on amqp protocol is just fine.
 
 
 
 
 ## Version Updates
 
+- Ver 0.5.7: see New section; the logging system is now here with full support to graylog
 - Ver 0.5.6: fixed the problem of not parsing the response from server to JSON in package before passing back to client;
 no parsing is needed at all now!
 - Ver 0.5.5: fixed problems in server side on error handling including returning messages and shutting down when connection throws an error;
@@ -182,8 +194,7 @@ updated license from ISC to MIT; minor fixes in readme; no longer prefer global 
 
 
 Definite:
-- Improve Readme with photos/interactions and version logs
-- Implement the logger system that would include all log info in one place
+- Improve Readme with photos/interactions
 - Include a simple RabbitMQ tutorial in README
 
 Maybe:
@@ -203,4 +214,6 @@ July 2015
 [3]: https://github.com/squaremo/amqp.node/tree/master/examples/tutorials
 [4]: https://github.com/dingziran
 [5]: http://www.wecash.net/
-[6]: https://www.rabbitmq.com/download.html
+[6]: https://www.graylog.org/
+[7]: https://www.npmjs.com/package/graylog2
+[8]: https://www.rabbitmq.com/download.html

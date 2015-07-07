@@ -9,7 +9,7 @@ var options = {
     ],
     hostname: "node-microservice" // the name of this host
     // (optional, default: os.hostname())
-};
+};//If you don't have a graylog system, simply comment and take out options. It still works without a logging system
 
 amqpClient.connect_amqp(amqp_url, options).then(
     function(){
