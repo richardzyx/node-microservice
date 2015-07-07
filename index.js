@@ -1,7 +1,10 @@
 var amqp = require('amqplib');
 var uuid = require('node-uuid');
+var graylog2 = require('graylog2');
+var logger={log:function(){},error:function(){}};
 var cacheTable={};
 var mqService={};
+
 //defer is discourage in most promise library so we define one for this particular situation
 function defer(timeout) {
     var resolve, reject;
@@ -13,13 +16,18 @@ function defer(timeout) {
     return {
         resolve: resolve,
         reject: reject,
-        promise: promise
+        promise: promise,
+        timestamp:new Date().getTime()
     };
 }
-exports.connect_amqp=function(amqp_url){
+
+exports.connect_amqp=function(amqp_url, options){
     return amqp.connect(amqp_url).then(function (conn) {
         return conn.createChannel().then(
             function onFulfilled(ch) {
+                if(options){
+                    logger=new graylog2.graylog(options);
+                }
                 mqService.ch=ch;
                 var ok = ch.assertQueue('', {exclusive: true})
                     .then(function (qok) {
@@ -33,7 +41,9 @@ exports.connect_amqp=function(amqp_url){
         setTimeout(exports.connect_amqp(amqp_url), 5000);
     });
 };
+
 exports.send=function(serviceName,message,timeout){
+    var messageStr=JSON.stringify(message);
     var q = serviceName + "_queue";
     var corrId = uuid();
     var ok = mqService.ok;
@@ -48,19 +58,28 @@ exports.send=function(serviceName,message,timeout){
             });
     });
     ok = ok.then(function (queue) {
-        console.log(' [x] Requesting'+ message);
-        ch.sendToQueue(q, new Buffer(JSON.stringify(message)), {
+        //console.log(' [x] Requesting'+ message);
+        ch.sendToQueue(q, new Buffer(messageStr), {
             correlationId: corrId, replyTo: queue
         });
     });
-    return df.promise;
+    return df.promise.then(
+        function onFulfilled(rs){
+            logger.log("request@#$"+messageStr+"====response@#$"+rs,{duration:new Date().getTime()-df.timestamp, service:serviceName});
+            return JSON.parse(rs);
+        },
+        function onReject(err){
+            logger.error("request@#$"+messageStr+"====response@#$"+err,{duration:new Date().getTime()-df.timestamp, service:serviceName});
+            return err;
+        }
+    );
 };
 
 function maybeAnswer(msg) {
     var corrId=msg.properties.correlationId;
     var pro = cacheTable[corrId];
     if(pro){
-        pro.resolve(JSON.parse(msg.content.toString()));
+        pro.resolve(msg.content.toString());
         delete cacheTable[corrId];
     }
 }
