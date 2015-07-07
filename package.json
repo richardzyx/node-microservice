@@ -1,6 +1,6 @@
 {
   "name": "node-microservice",
-  "version": "0.5.6",
+  "version": "0.5.7",
   "description": "Clean, Direct, Easy to Scale solution to Node Microservice Framework",
   "url": "https://github.com/richardzyx/node-microservice",
   "repository": {
@@ -12,10 +12,10 @@
     "start": "node index.js"
   },
   "keywords": [
-    "framework",
+    "rabbitmq",
     "microservice",
     "amqp",
-    "rabbitmq"
+    "framework"
   ],
   "author": "Richard Yuxuan Zhang, Ziran Ding",
   "license": "MIT",

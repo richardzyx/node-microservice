@@ -42,11 +42,11 @@ Advantage/Features:
 
 
 
-## New
+## What's new
 
 The **logging system** is now fully functional! We had a long discussion with multiple tryouts, and we have
 decided to use and only support the [graylog][6] system based on [graylog2][7] package for this project. It was not an 
-easy decision for us, and we understand having to install both graylog and elasticsearch would take up to 2 hours of
+easy decision for us, and we understand having to install both graylog and elasticsearch would take up to two hours of
 configurations. So we have made the logging options **optional**. If you would still like to use the common way `console.log`,
 simply uncomment the line in source code and everything will work exactly the same. For detailed description, see client function
 usage.
@@ -137,11 +137,13 @@ This function will easily set up your client with your message broker over amqp 
 
 
 
-`exports.connect_amqp=function(amqp_url)`
+`exports.connect_amqp=function(amqp_url, [options])`
 
 
 - amqp_url is the address of your MQ service. Such as:`"amqp://usr:password@128.11.22.230"`
-
+- options is the object that contains your graylog server's setting. A typical and minimum setting is included in the 
+testClient.js file in example folder. This is optional if you don't have or don't want to use the graylog system for your
+project.
 
 
 
@@ -194,7 +196,7 @@ updated license from ISC to MIT; minor fixes in readme; no longer prefer global 
 
 
 Definite:
-- Improve Readme with photos/interactions
+- Improve Readme with photos/interactions and the underlying mechanism
 - Include a simple RabbitMQ tutorial in README
 
 Maybe:
