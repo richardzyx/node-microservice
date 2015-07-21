@@ -50,8 +50,8 @@ correctness, and improve the performance along the way. All kinds of advice are 
 
 ## What's new
 
-- Fixed client's behavior when you don't care about server's response- it now returns undefined!
-- Fixed bug on timeout- the error is now threw out and can be caught!
+- Fixed client's behavior when you don't care about server's response- it now returns undefined.
+- Fixed bug on timeout- the error is now threw out and can be caught.
 
 
 
