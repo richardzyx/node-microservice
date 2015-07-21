@@ -5,8 +5,6 @@ Node－Microservice Package
 
 Clean, Direct, Easy to Scale solution to Node Microservice Framework.
 
-*This package is currently under rapid production/stability testing. I will first fix bugs that are critical to functional
-correctness, and improve the performance along the way. All kinds of advice are extremely welcomed!*
 
 
 Inspired by [seneca.js][1], IBM's article on [microservice using seneca and MQLight][2], and RabbitMQ's [tutorial on RPC][3], 
@@ -39,6 +37,13 @@ Advantage/Features:
     requests from one client. By using our own function, we made sure that no matter which requesting client 
     received the response, the request will be resolved and returned properly.
 - **Promise**: No more call back api! Everything is a Promise.
+
+
+
+
+
+*This package is currently under rapid production/stability testing. I will first fix bugs that are critical to functional
+correctness, and improve the performance along the way. All kinds of advice are extremely welcomed!*
 
 
 
