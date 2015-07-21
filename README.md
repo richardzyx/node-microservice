@@ -5,7 +5,8 @@ Node－Microservice Package
 
 Clean, Direct, Easy to Scale solution to Node Microservice Framework.
 
-
+*This package is currently under rapid production/stability testing. I will first fix bugs that are critical to functional
+correctness, and improve the performance along the way. All kinds of advice are extremely welcomed!*
 
 
 Inspired by [seneca.js][1], IBM's article on [microservice using seneca and MQLight][2], and RabbitMQ's [tutorial on RPC][3], 
@@ -44,12 +45,8 @@ Advantage/Features:
 
 ## What's new
 
-The **logging system** is now fully functional! We had a long discussion with multiple tryouts, and we have
-decided to use and only support the [graylog][6] system based on [graylog2][7] package for this project. It was not an 
-easy decision for us, and we understand having to install both graylog and elasticsearch would take up to two hours of
-configurations. So we have made the logging options **optional**. If you would still like to use the common way `console.log`,
-simply uncomment the line in source code and everything will work exactly the same. For detailed description, see client function
-usage.
+- Fixed client's behavior when you don't care about server's response- it now returns undefined!
+- Fixed bug on timeout- the error is now threw out and can be caught!
 
 
 
@@ -167,6 +164,19 @@ the client has received the response. Welcome to fork if you would like to add t
 
 
 
+###Logging
+
+We had a long discussion with multiple tryouts, and we havedecided to use and only support the [graylog][6] system 
+based on [graylog2][7] package for this project. It was not an 
+easy decision for us, and we understand having to install both graylog and elasticsearch would take up to two hours of
+configurations. So we have made the logging options **optional**. If you would still like to use the common way `console.log`,
+simply uncomment the line in source code and everything will work exactly the same. For detailed description, see client function
+usage.
+
+
+
+
+
 ## Example 
 
 You can find one test client and one test server file in the example folder. The amqp_url is fortified! Try with different options.
@@ -183,7 +193,9 @@ to its [website][8]. Essentially, since we use `amqplib`, any message broker bas
 
 ## Version Updates
 
-- Ver 0.5.7: see New section; the logging system is now here with full support to graylog
+- Ver 0.5.8: see New section; fixed client's behavior with empty response and bug on timeout error; the correlationID is used to
+identify empty response
+- Ver 0.5.7: the logging system is now here with full support to graylog
 - Ver 0.5.6: fixed the problem of not parsing the response from server to JSON in package before passing back to client;
 no parsing is needed at all now!
 - Ver 0.5.5: fixed problems in server side on error handling including returning messages and shutting down when connection throws an error;

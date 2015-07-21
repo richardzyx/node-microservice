@@ -65,12 +65,17 @@ exports.send=function(serviceName,message,timeout){
     });
     return df.promise.then(
         function onFulfilled(rs){
-            logger.log("request@#$"+messageStr+"====response@#$"+rs,{duration:new Date().getTime()-df.timestamp, service:serviceName});
-            return JSON.parse(rs);
+            if(JSON.parse(rs) == corrId) {
+                rs = undefined;
+                return rs;
+            }else{
+                logger.log("request@#$"+messageStr+"====response@#$"+rs,{duration:new Date().getTime()-df.timestamp, service:serviceName});
+                return JSON.parse(rs);
+            }
         },
         function onReject(err){
             logger.error("request@#$"+messageStr+"====response@#$"+err,{duration:new Date().getTime()-df.timestamp, service:serviceName});
-            return err;
+            throw err;
         }
     );
 };
@@ -163,6 +168,9 @@ exports.server_listen=function(amqp_url,service_name,pro,options){//pro has to b
                 var content=JSON.parse(msg.content.toString());
                 pro(content).then(
                     function onFulfilled(response){
+                        if(!response) {
+                            response = msg.properties.correlationId;
+                        }
                         ch.sendToQueue(msg.properties.replyTo,
                             new Buffer(JSON.stringify(response)),
                             {correlationId: msg.properties.correlationId});
