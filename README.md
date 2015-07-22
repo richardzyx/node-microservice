@@ -72,7 +72,7 @@ Just add this one line of code at the end of your service file, pass options as 
 
 
 
-```exports.server_listen=function(amqp_url,service_name,pro,options)```
+    exports.server_listen=function(amqp_url,service_name,pro,options)
 
 
 - amqp_url is the address of your MQ service. Such as:`"amqp://usr:password@128.11.22.230"`
@@ -159,7 +159,7 @@ This function will easily set up your client with your message broker over amqp 
 
 
 
-```exports.connect_amqp=function(amqp_url, [options])```
+    exports.connect_amqp=function(amqp_url, [options])
 
 
 - amqp_url is the address of your MQ service. Such as:`"amqp://usr:password@128.11.22.230"`
@@ -173,7 +173,7 @@ This function will send your message to your designated server, and timeout if a
 
 
 
-```exports.send=function(serviceName,message,timeout)```
+    exports.send=function(serviceName,message,timeout)
 
 
 - serviceName is the name of the server you want to send your message to. Make sure your server and client have the same serviceName!
@@ -218,6 +218,7 @@ to its [website][8]. Essentially, since we use `amqplib`, any message broker bas
 
 ## Version Updates
 
+- Ver 0.5.9: see New section; added ensureDone for extreme production needs
 - Ver 0.5.8: see New section; fixed client's behavior with empty response and bug on timeout error; the correlationID is used to
 identify empty response
 - Ver 0.5.7: the logging system is now here with full support to graylog
