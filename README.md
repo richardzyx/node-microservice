@@ -142,7 +142,7 @@ until servers no longer send error and ack the message.
 - Make the queue durable as stated on the RabbitMQ website. The default setting is false.
 
 
-### Example:
+**Example**:
 - Our Safest/Most Used Options:
   `{noAck:false, prefetch_num:10, messageTtl:60000}`
 - Simplest/Minimalist Options(best for just testing): 
