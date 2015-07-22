@@ -184,7 +184,11 @@ exports.server_listen=function(amqp_url,service_name,pro,options){//pro has to b
                             new Buffer(JSON.stringify(err)),
                             {correlationId: msg.properties.correlationId});
                         if(!options.noAck) {
-                            ch.ack(msg);
+                            if(options.ensureDone){
+                                ch.nack(msg);
+                            }else {
+                                ch.ack(msg);
+                            }
                         }
                     }
                 );

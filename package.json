@@ -1,6 +1,6 @@
 {
   "name": "node-microservice",
-  "version": "0.5.8",
+  "version": "0.5.9",
   "description": "Clean, Direct, Easy to Scale solution to Node Microservice Framework",
   "url": "https://github.com/richardzyx/node-microservice",
   "repository": {

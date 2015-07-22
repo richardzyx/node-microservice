@@ -48,29 +48,31 @@ correctness, and improve the performance along the way. All kinds of advice are 
 
 
 
-## What's new
+# What's new
 
+- Added ensureDone to server's option- the server will guarantee to complete the task by asking the MQ to requeue the error/failed
+message.
 - Fixed client's behavior when you don't care about server's response- it now returns undefined.
 - Fixed bug on timeout- the error is now threw out and can be caught.
 
 
 
-## Install
+# Install
 
     npm install node-microservice
 
-## Usage
+# Usage
 
 
 
 npm users please refer to GitHub repo for better formatted Readme.
 
-###Server:
+## Server:
 Just add this one line of code at the end of your service file, pass options as an object, and you have a working server.
 
 
 
-`exports.server_listen=function(amqp_url,service_name,pro,options)`
+```exports.server_listen=function(amqp_url,service_name,pro,options)```
 
 
 - amqp_url is the address of your MQ service. Such as:`"amqp://usr:password@128.11.22.230"`
@@ -113,7 +115,7 @@ timed out messages that the client no longer cares about.
 **prefetch_num** (integer bigger than or equal to 1)
 - Set the maximum number of acknowledgements the queue can wait from the server. In other words, it
 is the maximum number of tasks one server can take each time. That said, this will only be
-effective when the noAck is set to False. If prefetch_num is not passed in, the server will
+effective when the noAck is set to False. If prefetch_num is not given, the server will
 simply take as many tasks as possible and this may cause a race condition. In our production
 experience, we find that a number of 10 or 100 works just fine.
 
@@ -121,25 +123,43 @@ experience, we find that a number of 10 or 100 works just fine.
 
 *Only effective when noAck is set to False.
 
+
+
+
+**ensureDone** (boolean)
+- **New**: When set to true, if your server return the task with an error, the MQ will take back and requeue the message.
+Great for production when you need to make huge and consistent queries. It will guarantee the completeness of each task
+until servers no longer send error and ack the message.
+
+
+
+*Only effective when noAck is set to False.
+
+
+
+
 **durable** (boolean)
 - Make the queue durable as stated on the RabbitMQ website. The default setting is false.
 
 
-#####Example:
+### Example:
 - Our Safest/Most Used Options:
   `{noAck:false, prefetch_num:10, messageTtl:60000}`
 - Simplest/Minimalist Options(best for just testing): 
   `{noAck:true}`
+- When you need to make sure all tasks are completed with no error:
+  `{noAck:false, prefetch_num:10, messageTtl:60000, ensureDone:true}`
 
 
 
 
-###Client:
+
+## Client:
 This function will easily set up your client with your message broker over amqp protocol:
 
 
 
-`exports.connect_amqp=function(amqp_url, [options])`
+```exports.connect_amqp=function(amqp_url, [options])```
 
 
 - amqp_url is the address of your MQ service. Such as:`"amqp://usr:password@128.11.22.230"`
@@ -153,7 +173,7 @@ This function will send your message to your designated server, and timeout if a
 
 
 
-`exports.send=function(serviceName,message,timeout)`
+```exports.send=function(serviceName,message,timeout)```
 
 
 - serviceName is the name of the server you want to send your message to. Make sure your server and client have the same serviceName!
@@ -169,7 +189,7 @@ the client has received the response. Welcome to fork if you would like to add t
 
 
 
-###Logging
+## Logging
 
 We had a long discussion with multiple tryouts, and we havedecided to use and only support the [graylog][6] system 
 based on [graylog2][7] package for this project. It was not an 
