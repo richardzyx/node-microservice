@@ -218,6 +218,7 @@ to its [website][8]. Essentially, since we use `amqplib`, any message broker bas
 
 ## Version Updates
 
+- Ver 0.5.10: minor improve on graylog message
 - Ver 0.5.9: see New section; added ensureDone for extreme production needs
 - Ver 0.5.8: see New section; fixed client's behavior with empty response and bug on timeout error; the correlationID is used to
 identify empty response

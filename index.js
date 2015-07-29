@@ -69,12 +69,12 @@ exports.send=function(serviceName,message,timeout){
                 rs = undefined;
                 return rs;
             }else{
-                logger.log("request@#$"+messageStr+"====response@#$"+rs,{duration:new Date().getTime()-df.timestamp, service:serviceName});
+                logger.log("Success","request@#$"+messageStr+"====response@#$"+rs,{duration:new Date().getTime()-df.timestamp, service:serviceName});
                 return JSON.parse(rs);
             }
         },
         function onReject(err){
-            logger.error("request@#$"+messageStr+"====response@#$"+err,{duration:new Date().getTime()-df.timestamp, service:serviceName});
+            logger.error("Server Timeout","request@#$"+messageStr+"====response@#$"+err,{duration:new Date().getTime()-df.timestamp, service:serviceName});
             throw err;
         }
     );
