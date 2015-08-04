@@ -196,5 +196,6 @@ exports.server_listen=function(amqp_url,service_name,pro,options){//pro has to b
         });
     }).then(null, function(err){
         console.error("Server has problem connecting, shutting down...\nDetail:\n" + err);
+        throw err;
     });
 };
