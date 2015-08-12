@@ -9,8 +9,7 @@ Clean, Direct, Easy to Scale solution to Node Microservice Framework.
 
 Inspired by [seneca.js][1], IBM's article on [microservice using seneca and MQLight][2], and RabbitMQ's [tutorial on RPC][3], 
 we aim to create a one stop solution that will allow seneca-style communication between any number of servers and clients, with the
-ability of load balance offered by message brokers such as RabbitMQ. We did it by first trying all the current available
-choices based on seneca.js, but none of them really worked in the most basic aspects. So we decided to do this without
+ability of load balance offered by message brokers such as RabbitMQ. We decided to do this without
 any dependency on seneca, thus allowing us the maximum freedom in programming language, and set up RabbitMQ server
 as our own message broker. Using this package, you only need one function to set up the server, and two functions for
 the client. You can even separate the connection and send functions for the client, so you only need to connect once
@@ -50,10 +49,10 @@ correctness, and improve the performance along the way. All kinds of advice are 
 
 # What's new
 
+- Fixed client's timeout error behavior- it now throws an Error object, intead of a string of "Timeout"
 - Added ensureDone to server's option- the server will guarantee to complete the task by asking the MQ to requeue the error/failed
 message.
 - Fixed client's behavior when you don't care about server's response- it now returns undefined.
-- Fixed bug on timeout- the error is now threw out and can be caught.
 
 
 
@@ -62,10 +61,6 @@ message.
     npm install node-microservice
 
 # Usage
-
-
-
-npm users please refer to GitHub repo for better formatted Readme.
 
 ## Server:
 Just add this one line of code at the end of your service file, pass options as an object, and you have a working server.
@@ -218,6 +213,7 @@ to its [website][8]. Essentially, since we use `amqplib`, any message broker bas
 
 ## Version Updates
 
+- Ver 0.5.11: Timeout err is thrown with an Error object
 - Ver 0.5.10: minor improve on graylog message; server throw error after disconnection
 - Ver 0.5.9: see New section; added ensureDone for extreme production needs
 - Ver 0.5.8: see New section; fixed client's behavior with empty response and bug on timeout error; the correlationID is used to

@@ -75,7 +75,7 @@ exports.send=function(serviceName,message,timeout){
         },
         function onReject(err){
             logger.error("Timeout","request@#$"+messageStr+"====response@#$"+err,{duration:new Date().getTime()-df.timestamp, service:serviceName});
-            throw err;
+            throw new Error(err);
         }
     );
 };
