@@ -41,9 +41,7 @@ Advantage/Features:
 
 
 
-*This package is currently under rapid production/stability testing. I will first fix bugs that are critical to functional
-correctness, and improve the performance along the way. All kinds of advice are extremely welcomed!*
-
+*This package is tested and stable. THe performance is great in production for over two months. More extensive testings are welcomed!*
 
 
 
@@ -213,6 +211,7 @@ to its [website][8]. Essentially, since we use `amqplib`, any message broker bas
 
 ## Version Updates
 
+- Ver 0.6.0: Production performance is great. Welcome for extensive testings!
 - Ver 0.5.11: Timeout err is thrown with an Error object
 - Ver 0.5.10: minor improve on graylog message; server throw error after disconnection
 - Ver 0.5.9: see New section; added ensureDone for extreme production needs
