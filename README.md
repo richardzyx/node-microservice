@@ -41,7 +41,7 @@ Advantage/Features:
 
 
 
-*This package is tested and stable. THe performance is great in production for over two months. More extensive testings are welcomed!*
+*This package is tested and stable. The performance is great in production for over two months. More extensive testings are welcomed!*
 
 
 
